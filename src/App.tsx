@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { GASClient } from "gas-client";
 import * as server from "./server/main";
 
@@ -15,6 +14,7 @@ function App() {
 
   return (
     <>
+      <h1 className="text-3xl font-bold underline">Reference Check</h1>
       <div className="card">
         <button onClick={handleClick}>Selected: {cell}</button>
       </div>
