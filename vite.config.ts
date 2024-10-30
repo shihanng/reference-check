@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     viteSingleFile(),
     viteStaticCopy({
-      targets: [{ src: ["appsscript.json", "main.ts"], dest: "./" }],
+      targets: [{ src: ["appsscript.json", "src/server/main.ts"], dest: "./" }],
     }),
   ],
 });
