@@ -35,7 +35,7 @@ function CellLink({ cell }: CellLinkProps) {
             // ...process something
           }}
         >
-          {cell.value}
+          {cell.a1Notation}
         </Link>
       </div>
     </>
