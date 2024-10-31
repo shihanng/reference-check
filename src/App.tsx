@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="m-2">
-      <div className="flex items-center">
+      <div className="flex w-full items-center">
         <div className="pr-2">
           <Button
             loading={loading}
@@ -33,7 +33,7 @@ function App() {
           </Button>
         </div>
         <Divider orientation="vertical" />
-        <div className="pl-2 truncate">
+        <div className="pl-2 flex truncate overflow-hidden">
           <CellLink cell={cell} />
         </div>
       </div>
