@@ -15,9 +15,22 @@ function onOpen() {
     .addToUi();
 }
 
-// @ts-expect-error: TS6133
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function getSelectedCellValue() {
-  const range = SpreadsheetApp.getActiveSpreadsheet().getActiveRange();
-  return range ? range.getValue() : "No cell selected";
+export interface Cell {
+  value: string;
+  a1Notation: string;
+  sheet: string;
 }
+
+function getSelectedCell(): Cell | undefined {
+  const range = SpreadsheetApp.getActiveSpreadsheet().getActiveRange();
+  if (!range) {
+    return;
+  }
+  return {
+    value: range.getDisplayValue(),
+    a1Notation: range.getA1Notation(),
+    sheet: range.getSheet().getName(),
+  };
+}
+
+export { getSelectedCell };
