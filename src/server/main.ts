@@ -17,6 +17,7 @@ function onOpen() {
 
 export interface Cell {
   value: string;
+  formula: string;
   a1Notation: string;
   sheet: string;
 }
@@ -28,6 +29,7 @@ function getSelectedCell(): Cell | undefined {
   }
   return {
     value: range.getDisplayValue(),
+    formula: range.getFormula(),
     a1Notation: range.getA1Notation(),
     sheet: range.getSheet().getName(),
   };
