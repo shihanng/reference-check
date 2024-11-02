@@ -5,6 +5,8 @@ import Button from "@mui/joy/Button";
 import Divider from "@mui/joy/Divider";
 import RefLink from "./components/RefLink";
 import CellValue from "./components/CellValue";
+import RefList from "./components/RefList";
+import { Typography } from "@mui/joy";
 
 const { serverFunctions } = new GASClient<typeof server>();
 
@@ -39,6 +41,8 @@ function App() {
         </div>
       </div>
       <CellValue>{cell?.formula ? cell.formula : cell?.value}</CellValue>
+      <Typography level="title-sm">Referring to</Typography>
+      <RefList cell={cell} />
     </div>
   );
 }
