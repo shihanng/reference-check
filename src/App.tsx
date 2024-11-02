@@ -3,7 +3,7 @@ import { GASClient } from "gas-client";
 import * as server from "./server/main";
 import Button from "@mui/joy/Button";
 import Divider from "@mui/joy/Divider";
-import CellLink from "./components/CellLink";
+import RefLink from "./components/RefLink";
 import CellValue from "./components/CellValue";
 
 const { serverFunctions } = new GASClient<typeof server>();
@@ -35,7 +35,7 @@ function App() {
         </div>
         <Divider orientation="vertical" />
         <div className="pl-2 flex truncate overflow-hidden">
-          <CellLink cell={cell} />
+          <RefLink reference={cell} />
         </div>
       </div>
       <CellValue>{cell?.formula ? cell.formula : cell?.value}</CellValue>

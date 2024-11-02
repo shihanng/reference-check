@@ -4,12 +4,12 @@ import * as server from "../server/main";
 
 const { serverFunctions } = new GASClient<typeof server>();
 
-interface CellLinkProps {
-  cell?: server.Cell;
+interface RefLinkProps {
+  reference?: server.Ref;
 }
 
-function CellLink({ cell }: CellLinkProps) {
-  if (!cell) {
+function RefLink({ reference }: RefLinkProps) {
+  if (!reference) {
     return (
       <Typography level="body-sm" className="truncate w-full">
         Select a cell
@@ -19,15 +19,15 @@ function CellLink({ cell }: CellLinkProps) {
 
   const handleClick = async () => {
     await serverFunctions.gotoRef({
-      sheet: cell.sheet,
-      a1Notation: cell.a1Notation,
+      sheet: reference.sheet,
+      a1Notation: reference.a1Notation,
     });
   };
 
   return (
     <>
       <Chip color="success" size="sm" variant="outlined" onClick={handleClick}>
-        {cell.sheet}
+        {reference.sheet}
       </Chip>
       <div className="ml-1 inline">
         <Link
@@ -36,11 +36,11 @@ function CellLink({ cell }: CellLinkProps) {
           component="button"
           onClick={handleClick}
         >
-          {cell.a1Notation}
+          {reference.a1Notation}
         </Link>
       </div>
     </>
   );
 }
 
-export default CellLink;
+export default RefLink;
