@@ -70,11 +70,15 @@ export function extractRefs(cell: Cell): Ref[] {
     if (match.includes("!")) {
       const parts = match.split("!");
       const sheet = parts[0].replace(/^'|'$/g, ""); // Remove leading and trailing quotes if present
-      refs.push({ a1Notation: parts[1], sheet });
+      refs.push({ a1Notation: normalA1Notation(parts[1]), sheet });
     } else {
-      refs.push({ a1Notation: match, sheet: cell.sheet });
+      refs.push({ a1Notation: normalA1Notation(match), sheet: cell.sheet });
     }
   }
 
   return refs;
+}
+
+export function normalA1Notation(notation: string): string {
+  return notation.replace(/\$/g, "").toUpperCase();
 }

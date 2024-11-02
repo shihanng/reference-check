@@ -15,15 +15,15 @@ test.each([
   [
     "=1+$A1+Q$1234",
     [
-      { a1Notation: "$A1", sheet: "Original Sheet" },
-      { a1Notation: "Q$1234", sheet: "Original Sheet" },
+      { a1Notation: "A1", sheet: "Original Sheet" },
+      { a1Notation: "Q1234", sheet: "Original Sheet" },
     ],
   ],
   [
     "=1+$$A$1+$Q$12$34$",
     [
-      { a1Notation: "$A$1", sheet: "Original Sheet" },
-      { a1Notation: "$Q$12", sheet: "Original Sheet" },
+      { a1Notation: "A1", sheet: "Original Sheet" },
+      { a1Notation: "Q12", sheet: "Original Sheet" },
     ],
   ],
   [
