@@ -15,11 +15,9 @@ function onOpen() {
     .addToUi();
 }
 
-export interface Cell {
+export interface Cell extends Ref {
   value: string;
   formula: string;
-  a1Notation: string;
-  sheet: string;
 }
 
 function getSelectedCell(): Cell | undefined {
@@ -35,4 +33,15 @@ function getSelectedCell(): Cell | undefined {
   };
 }
 
-export { getSelectedCell };
+export interface Ref {
+  a1Notation: string;
+  sheet: string;
+}
+
+function gotoRef(ref: Ref) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(ref.sheet);
+  const range = sheet?.getRange(ref.a1Notation);
+  range?.activate();
+}
+
+export { getSelectedCell, gotoRef };
