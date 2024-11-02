@@ -1,18 +1,15 @@
 import { List, ListItem } from "@mui/joy";
-import { Cell, extractRefs } from "../server/main";
+import { Ref } from "../server/main";
 import RefLink from "./RefLink";
 
 interface RefListProps {
-  cell?: Cell;
+  refs: Ref[];
 }
 
-function RefList({ cell }: RefListProps) {
-  if (!cell) {
-    return null;
-  }
+function RefList({ refs }: RefListProps) {
   return (
     <List size="sm">
-      {extractRefs(cell).map((ref, idx) => {
+      {refs.map((ref, idx) => {
         return (
           <ListItem key={idx}>
             <RefLink reference={ref} />

@@ -41,8 +41,12 @@ function App() {
         </div>
       </div>
       <CellValue>{cell?.formula ? cell.formula : cell?.value}</CellValue>
-      <Typography level="title-sm">Referring to</Typography>
-      <RefList cell={cell} />
+      {cell ? (
+        <>
+          <Typography level="title-sm">Referring to</Typography>
+          <RefList refs={server.extractRefs(cell.formula, cell.sheet)} />
+        </>
+      ) : null}
     </div>
   );
 }

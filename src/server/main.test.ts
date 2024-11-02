@@ -34,11 +34,6 @@ test.each([
     ],
   ],
 ])("extracting references from cell", (formula: string, ref: Ref[]) => {
-  const cell = {
-    value: "??????",
-    formula,
-    a1Notation: "!!!!!!",
-    sheet: "Original Sheet",
-  };
-  expect(extractRefs(cell)).toStrictEqual(ref);
+  expect(extractRefs(formula, "Original Sheet")).toStrictEqual(ref);
+});
 });
