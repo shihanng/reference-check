@@ -16,9 +16,9 @@ function CellValue({ children }: CellValueProps) {
         my: 1,
       }}
     >
-      <Typography level="body-md">
-        <div className="truncate overflow-hidden">{children}</div>
-      </Typography>
+      <div className="truncate overflow-hidden">
+        <Typography level="body-md">{children}</Typography>
+      </div>
     </Box>
   );
 }
