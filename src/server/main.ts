@@ -18,6 +18,7 @@ function onOpen() {
 export interface Cell extends Ref {
   value: string;
   formula: string;
+  referredBy: Ref[];
 }
 
 function getSelectedCell(): Cell | undefined {
@@ -29,13 +30,49 @@ function getSelectedCell(): Cell | undefined {
   const value = range.getDisplayValue();
   const formula =
     value === "#ERROR!" || value === "#REF!" ? "" : range.getFormula();
+  const a1Notation = range.getA1Notation();
+  const sheet = range.getSheet().getName();
 
   return {
     value,
     formula,
-    a1Notation: range.getA1Notation(),
-    sheet: range.getSheet().getName(),
+    a1Notation,
+    sheet,
+    referredBy: findCell(a1Notation, sheet),
   };
+}
+
+function findCell(a1Notation: string, sheet: string): Ref[] {
+  const ranges = SpreadsheetApp.getActiveSpreadsheet()
+    .createTextFinder(`\\$?${a1Notation.replace(/([A-Z]+)(\d+)/, "$1\\$?$2")}`)
+    .matchFormulaText(true)
+    .useRegularExpression(true)
+    .findAll();
+
+  const founds = ranges.reduce((acc, range) => {
+    const value = range.getDisplayValue();
+    if (value === "#ERROR!" || value === "#REF!") {
+      return acc;
+    }
+
+    const formula = range.getFormula();
+    const refs = extractRefs(formula, range.getSheet().getName());
+
+    const found = refs.some(
+      (ref) => ref.sheet === sheet && ref.a1Notation === a1Notation,
+    );
+
+    if (found) {
+      acc.push({
+        a1Notation: range.getA1Notation(),
+        sheet: range.getSheet().getName(),
+      });
+    }
+
+    return acc;
+  }, [] as Ref[]);
+
+  return founds;
 }
 
 export interface Ref {

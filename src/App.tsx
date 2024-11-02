@@ -45,6 +45,8 @@ function App() {
         <>
           <Typography level="title-sm">Referring to</Typography>
           <RefList refs={server.extractRefs(cell.formula, cell.sheet)} />
+          <Typography level="title-sm">Referred by</Typography>
+          <RefList refs={cell.referredBy} />
         </>
       ) : null}
     </div>
