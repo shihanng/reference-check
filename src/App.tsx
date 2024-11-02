@@ -4,6 +4,7 @@ import * as server from "./server/main";
 import Button from "@mui/joy/Button";
 import Divider from "@mui/joy/Divider";
 import CellLink from "./components/CellLink";
+import CellValue from "./components/CellValue";
 
 const { serverFunctions } = new GASClient<typeof server>();
 
@@ -37,6 +38,7 @@ function App() {
           <CellLink cell={cell} />
         </div>
       </div>
+      <CellValue>{cell?.formula ? cell.formula : cell?.value}</CellValue>
     </div>
   );
 }
