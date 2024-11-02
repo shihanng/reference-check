@@ -25,9 +25,14 @@ function getSelectedCell(): Cell | undefined {
   if (!range) {
     return;
   }
+
+  const value = range.getDisplayValue();
+  const formula =
+    value === "#ERROR!" || value === "#REF!" ? "" : range.getFormula();
+
   return {
-    value: range.getDisplayValue(),
-    formula: range.getFormula(),
+    value,
+    formula,
     a1Notation: range.getA1Notation(),
     sheet: range.getSheet().getName(),
   };
