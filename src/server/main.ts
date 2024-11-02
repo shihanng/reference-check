@@ -50,3 +50,31 @@ function gotoRef(ref: Ref) {
 }
 
 export { getSelectedCell, gotoRef };
+
+const refRegex =
+  /(?:'[^']+'|[A-Za-z0-9_]+)?!?(\$?[A-Za-z]+\$?\d+)(?::(\$?[A-Za-z]+\$?\d+))?/g;
+
+export function extractRefs(cell: Cell): Ref[] {
+  if (cell.formula === "") {
+    return [];
+  }
+
+  const matches = cell.formula.match(refRegex);
+  if (!matches) {
+    return [];
+  }
+
+  const refs: Ref[] = [];
+
+  for (const match of matches) {
+    if (match.includes("!")) {
+      const parts = match.split("!");
+      const sheet = parts[0].replace(/^'|'$/g, ""); // Remove leading and trailing quotes if present
+      refs.push({ a1Notation: parts[1], sheet });
+    } else {
+      refs.push({ a1Notation: match, sheet: cell.sheet });
+    }
+  }
+
+  return refs;
+}
