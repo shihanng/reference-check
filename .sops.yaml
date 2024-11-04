@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: '^tf/providers\.tf$'
+    age: >-
+      age1jv3zzkt0kz44l5gdm0svjswd39gwg30jewqaq03vshffvavkny0sjysxdg
