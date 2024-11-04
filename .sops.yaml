@@ -1,4 +1,13 @@
 creation_rules:
+  - path_regex: '^\.clasp\.json$'
+    encrypted_regex: "^(scriptId|projectId)$"
+    age: >-
+      age1jv3zzkt0kz44l5gdm0svjswd39gwg30jewqaq03vshffvavkny0sjysxdg
   - path_regex: '^tf/providers\.tf$'
     age: >-
       age1jv3zzkt0kz44l5gdm0svjswd39gwg30jewqaq03vshffvavkny0sjysxdg
+stores:
+  json:
+    indent: 2
+  json_binary:
+    indent: 2
