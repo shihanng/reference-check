@@ -7,7 +7,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "Reference Check",
   tagline: "Simple Trace Precedents and Trace Dependents in Google Sheets",
-  favicon: "img/favicon.ico",
+  favicon: "img/logo.svg",
 
   // Set the production url of your site here
   url: "https://your-docusaurus-site.example.com",
