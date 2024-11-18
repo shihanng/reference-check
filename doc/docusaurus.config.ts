@@ -56,12 +56,6 @@ const config: Config = {
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Tutorial",
-        },
-        {
           href: "https://github.com/shihanng/reference-check",
           label: "GitHub",
           position: "right",
