@@ -70,7 +70,12 @@ const config: Config = {
     },
     footer: {
       style: "dark",
-      links: [],
+      links: [
+        {
+          to: "privacy",
+          label: "Privacy Policy",
+        },
+      ],
       copyright: `Copyright © ${new Date().getFullYear()} Shi Han NG. Built with Docusaurus.`,
     },
     prism: {
