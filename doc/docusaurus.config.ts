@@ -69,6 +69,10 @@ const config: Config = {
           to: "privacy",
           label: "Privacy Policy",
         },
+        {
+          to: "terms",
+          label: "Terms of Service",
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Shi Han NG. Built with Docusaurus.`,
     },
