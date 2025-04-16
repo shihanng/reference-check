@@ -33,6 +33,6 @@ sops -e -i .clasp.json
 You need to decrypt it during the development and deployment phase:
 
 ```
-sops -d tf/providers.tf
-sops -d .clasp.json
+sops -d -i tf/providers.tf
+sops -d -i .clasp.json
 ```
