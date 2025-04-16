@@ -2,9 +2,10 @@
 
 ## Terraform
 
-We use Terraform to manage the project on the Google Cloud Platform (GCP).
+We use Terraform to manage the project on the Google Cloud Platform (GCP), etc. We use `gcloud` CLI to authenticate with GCP. See [here](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started#configuring-the-provider) for more information. We use [GitHub CLI to authenticate](https://registry.terraform.io/providers/integrations/github/latest/docs) with GitHub. We also use `terraform login` to authenticate for our Terraform backend.
 
 ```
+export CLOUDFLARE_API_TOKEN=xxx
 terraform login
 terraform plan
 ```
@@ -32,6 +33,6 @@ sops -e -i .clasp.json
 You need to decrypt it during the development and deployment phase:
 
 ```
-sops -d tf/providers.tf
-sops -d .clasp.json
+sops -d -i tf/providers.tf
+sops -d -i .clasp.json
 ```

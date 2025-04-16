@@ -3,7 +3,7 @@ creation_rules:
     encrypted_regex: "^(scriptId|projectId)$"
     age: >-
       age1jv3zzkt0kz44l5gdm0svjswd39gwg30jewqaq03vshffvavkny0sjysxdg
-  - path_regex: '^tf/providers\.tf$'
+  - path_regex: '^tf/providers_secret\.tf$'
     age: >-
       age1jv3zzkt0kz44l5gdm0svjswd39gwg30jewqaq03vshffvavkny0sjysxdg
 stores:
