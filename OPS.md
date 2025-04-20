@@ -23,16 +23,10 @@ clasp push
 
 # SOPS
 
-The following files are encrypted with [SOPS](https://getsops.io/).
-
-```
-sops -e -i tf/providers.tf
-sops -e -i .clasp.json
-```
-
+The some files are encrypted with [SOPS](https://getsops.io/).
 You need to decrypt it during the development and deployment phase:
 
 ```
-sops -d -i tf/providers.tf
-sops -d -i .clasp.json
+just encrypt
+just decrypt
 ```
