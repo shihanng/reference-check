@@ -21,3 +21,9 @@ publish:
       clasp login
     fi
     clasp push
+
+tf +ARGS:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export CLOUDFLARE_API_TOKEN=$(op item get "CLOUDFLARE_API_TOKEN" --vault=reference-check --field credential --reveal)
+    terraform -chdir=tf {{ ARGS }}
