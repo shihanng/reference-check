@@ -10,3 +10,14 @@ decrypt:
 encrypt:
     sops -e -i tf/providers_secret.tf
     sops -e -i .clasp.json
+
+publish:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if clasp list > /dev/null 2>&1; then
+      echo "✅ Already logged in"
+    else
+      echo "🔐 No credentials found"
+      clasp login
+    fi
+    clasp push

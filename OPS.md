@@ -15,10 +15,10 @@ The "[OAuth consent screen](https://developers.google.com/apps-script/guides/clo
 ## clasp
 
 We use [clasp](https://github.com/google/clasp) to manage the project in Google Apps Script.
+Use `just publish` to publish the script.
 
 ```
-clasp login
-clasp push
+just publish
 ```
 
 # SOPS
