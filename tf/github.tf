@@ -1,45 +1,39 @@
-locals {
+module "github" {
+  source     = "github.com/shihanng/tf-github-repo?ref=v0.1.0"
   repository = "reference-check"
 }
 
-resource "github_issue_label" "priority_low" {
-  repository = local.repository
-  name       = "priority:low"
-  color      = "EB5A3C"
+moved {
+  from = github_issue_label.priority_low
+  to   = module.github.github_issue_label.priority_low
 }
 
-resource "github_issue_label" "priority_med" {
-  repository = local.repository
-  name       = "priority:med"
-  color      = "DF9755"
+moved {
+  from = github_issue_label.priority_med
+  to   = module.github.github_issue_label.priority_med
 }
 
-resource "github_issue_label" "priority_high" {
-  repository = local.repository
-  name       = "priority:high"
-  color      = "EDF4C2"
+moved {
+  from = github_issue_label.priority_high
+  to   = module.github.github_issue_label.priority_high
 }
 
-resource "github_issue_label" "type_bug" {
-  repository = local.repository
-  name       = "type:bug"
-  color      = "E6D9A2"
+moved {
+  from = github_issue_label.type_bug
+  to   = module.github.github_issue_label.type_bug
 }
 
-resource "github_issue_label" "type_enhancement" {
-  repository = local.repository
-  name       = "type:enhancement"
-  color      = "CB80AB"
+moved {
+  from = github_issue_label.type_enhancement
+  to   = module.github.github_issue_label.type_enhancement
 }
 
-resource "github_issue_label" "type_proposal" {
-  repository = local.repository
-  name       = "type:proposal"
-  color      = "624E88"
+moved {
+  from = github_issue_label.type_proposal
+  to   = module.github.github_issue_label.type_proposal
 }
 
-resource "github_issue_label" "type_task" {
-  repository = local.repository
-  name       = "type:task"
-  color      = "D98324"
+moved {
+  from = github_issue_label.type_task
+  to   = module.github.github_issue_label.type_task
 }
